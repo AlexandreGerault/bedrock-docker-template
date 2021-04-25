@@ -50,3 +50,26 @@ docker-compose up
 ```
 
 Vous pouvez alors accéder au projet en vous rendant sur à l’adresse http://localhost:4444.
+
+## Personnaliser les variables d’environnement
+
+### Base de données
+
+Vous pouvez normalement utiliser directement ce modèle pour démarrer un projet. Je vous recommande cependant de modifier
+la variable `MYSQL_CONTAINER_NAME` afin de bénéficier d’un nom de conteneur unique et éviter les risques de collisions
+entre vos projets.
+
+### WordPress
+
+Les variables d’environnements WordPress permettent de choisir différents paramètres pour configurer son fonctionnement.
+Les variables actuellement prises en compte par ce modèle Docker sont
+
+```dotenv
+WP_ENV='development'
+WP_HOME='http://localhost:${NGINX_PORT}'
+WP_SITEURL="${WP_HOME}/wp"
+WP_DEBUG_LOG=/path/to/debug.log
+```
+
+La liaison avec la base de données se fait automatiquement dans le fichier `docker-compose.yml` et se base sur le nom du
+conteneur de la base de données.
