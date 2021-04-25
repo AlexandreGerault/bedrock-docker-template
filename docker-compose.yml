@@ -49,5 +49,13 @@ services:
       WP_DEBUG_LOG: ${WP_DEBUG_LOG}
     user: ${LOCAL_USER}
 
+  composer:
+    image: composer:latest
+    restart: 'no'
+    command:  install --no-scripts --prefer-dist
+    working_dir: '/usr/src/app'
+    volumes:
+      - './apps/bedrock:/usr/src/app'
+
 volumes:
   database-volume:
