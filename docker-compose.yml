@@ -42,7 +42,7 @@ services:
       DB_NAME: ${MYSQL_DATABASE}
       DB_USER: ${MYSQL_USER}
       DB_PASSWORD: ${MYSQL_PASSWORD}
-      DB_HOST: ${MYSQL_HOST}
+      DB_HOST: ${MYSQL_CONTAINER_NAME}
     user: ${LOCAL_USER}
 
 volumes:
